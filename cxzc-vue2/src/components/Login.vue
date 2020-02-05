@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     login () {
+      var _this = this
       this.$axios
         .post('/login', {
           username: this.loginForm.username,
@@ -30,7 +31,10 @@ export default {
         })
         .then(successResponse => {
           if (successResponse.data.code === 200) {
-            this.$router.replace({path: '/index'})
+            // var data = this.loginForm
+            _this.$store.commit('login', _this.loginForm)
+            var path = this.$route.query.redirect
+            this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
           } else {
             alert('登录失败！')
           }
