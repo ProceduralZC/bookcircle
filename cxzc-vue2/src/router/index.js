@@ -6,6 +6,7 @@ import Home from '@/components/home/Home'
 import UserManager from '@/components/sysmanage/UserManager'
 import Login from '@/components/Login'
 import Error from '@/components/Error'
+import addUser from '../components/addUser'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
           component: UserManager
         }
       ]
+    },
+    {
+      path: '/adduser',
+      name: 'addUser',
+      component: addUser
     },
     {
       path: '/*', // 注意，这里不是嵌套理由了，这是为了设置404页面，一定要放在最后面，这样当服务器找不到页面的时候就会返回404

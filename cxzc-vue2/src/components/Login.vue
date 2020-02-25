@@ -17,6 +17,9 @@
     <el-form-item style="width: 100%">
       <el-button type="primary" style="width: 100%;background: #707070;border: none" v-on:click="login">登录</el-button>
     </el-form-item>
+    <el-form-item style="width: 100%">
+      <el-text type="primary" v-on:click="addUser">用户添加</el-text>
+    </el-form-item>
   </el-form>
   </body>
 </template>
@@ -77,11 +80,17 @@ export default {
             var path = this.$route.query.redirect
             this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
           } else {
-            this.$message.warning('登录失败！')
+            // this.$message.warning('登录失败！')
+            this.$alert('登录失败', '提示', {
+              confirmButtonText: '确定'
+            })
           }
         })
         .catch(failResponse => {
         })
+    },
+    addUser () {
+      this.$router.replace('/adduser')
     }
   }
 }
